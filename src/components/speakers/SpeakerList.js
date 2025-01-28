@@ -93,6 +93,7 @@ const SpeakerList = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    // workaround for async/await pattern
     async function getDataAsync() {
       dispatch({ type: "setLoadingStatus" });
       const results = await axios.get("/api/speakers");
@@ -100,13 +101,6 @@ const SpeakerList = () => {
     }
     getDataAsync();
   }, []);
-
-  function updateSpeaker(speakerRec) {
-    const speakerUpdated = speakers.map(function (rec) {
-      return speakerRec.id === rec.id ? speakerRec : rec;
-    });
-    setSpeakers(speakerUpdated);
-  }
 
   if (state.loading) return <div>Loading...</div>;
 
