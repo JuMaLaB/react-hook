@@ -12,7 +12,8 @@ export default function Demo() {
         ref={imgRef}
         style={{ filter: "grayscale(100%)" }}
         onMouseOver={() => {
-          imgRef.current.style.filter = "grayscale(0%)";setCnt(cnt+1)
+          imgRef.current.style.filter = "grayscale(0%)";
+          setCnt(cnt+1);
           mouseOverCnt.current++;
         }}
         onMouseOut={() => {
