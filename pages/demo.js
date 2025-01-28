@@ -18,6 +18,8 @@ export default function Demo() {
     return retVals;
   }
   const [cnt, setCnt] = useState(0);
+
+  // used to force re-render
   useEffect(() => {
     console.log("rendering...");
   }, [cnt]);
@@ -25,6 +27,8 @@ export default function Demo() {
     setCnt(cnt + 1);
     console.log("reRenderMe called...");
   }
+
+  // needed to ensure that this index is set to 0 after render again => unmount/mount
   localStateValueIndex = 0;
   return <DemoApp useState={useMyState} />;
 }
